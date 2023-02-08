@@ -12,7 +12,7 @@ The EDDC data used to prepare this code was supported by a NSW Institute of Trau
 
   
 
-Overview
+**Overview**
 
   
 
@@ -20,7 +20,7 @@ The NSW emergency department data collection (EDDC) contains patient care episod
 
   
 
-Approach used here
+**Approach used here**
 
   
 
