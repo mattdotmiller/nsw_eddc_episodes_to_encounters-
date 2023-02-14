@@ -12,15 +12,15 @@ The EDDC data used to prepare this code was supported by a NSW Institute of Trau
 
   
 
-**Overview**
+Overview
 
   
 
-The NSW emergency department data collection (EDDC) contains patient care episodes rather than admissions. For example, a patient can be seen in an emergency department, recorded as 'admitted' then subsequently transferred to another hospital via the emergency department, where they are also admitted. Therefore a single patient can be 'admitted' from two emergency department visits on the same day in a different hospital. Unfortunately, the documentation of a "mode of separation" is not always helpful. For example, patients can be "Admitted: Transferred to another hospital" or "Departed: Transferred to another hospital w/out 1st being admitted to hospital transferred from" or "Departed: for other clinical service location" and "Admitted to Ward/inpatient unit" can refer to a similar process, that is being seen at one emergency department then transferred to another hospital (whether from the emergency department or ward". An admission needs to be created by combining the appropriate patient care episodes.
+The NSW emergency department data collection (EDDC) contains patient care episodes rather than admissions. For example, a patient can be seen in an emergency department, recorded as 'admitted' then subsequently transferred to another hospital via the emergency department, where they are also admitted. Therefore a single patient can be 'admitted' from two emergency department visits on the same day in a different hospital. Unfortunately, the documentation of a "mode of separation" is not always helpful. As a result; "Admitted: Transferred to another hospital" or "Departed: Transferred to another hospital w/out 1st being admitted to hospital transferred from" or "Departed: for other clinical service location" and "Admitted to Ward/inpatient unit" can refer to a similar process - that is being seen at one emergency department then transferred to another hospital (whether from the emergency department or ward". An admission needs to be created by combining the appropriate patient care episodes based on date as much as modes of separation.
 
   
 
-**Approach used here**
+Approach used here
 
   
 
@@ -28,7 +28,7 @@ Rather than using specific character fields describing modes of separation or tr
 
   
 
-This approach is consistent with the naming conventions outlined in [Vallmuur K, McCreanor V, Cameron C, et al. Inj Prev 2021;27:479–489](https://injuryprevention.bmj.com/content/27/5/479) where an _Episode_ is the discrete unit of activity for a patient, and also referred to as a separation. Separations may include discharge, transfer or death, or ‘statistical’ separations such as episode type changes). An _Encounter_ is made up of contiguous episodes of care. This can include episodes between health services so long as they are related temporally. Episodes usually have no more than 24–48 hours between them (in other words, depending on the data you can allow 24-48 hours between episodes and include them in the same encounter.
+This approach is consistent with the naming conventions outlined in [Vallmuur K, McCreanor V, Cameron C, et al. Inj Prev 2021;27:479–489](https://injuryprevention.bmj.com/content/27/5/479) where an _Episode_ is the discrete unit of activity for a patient, and also referred to as a separation. Episdes/separations may include discharge, transfer or death, or ‘statistical’ separations such as episode type changes. An _Encounter_ is made up of contiguous episodes of care. This can include episodes between health services so long as they are related temporally. Episodes usually have no more than 24–48 hours between them (in other words, depending on the data you can allow 24-48 hours between episodes and include them in the same encounter.
 
   
 
@@ -63,6 +63,8 @@ This function takes each PPN and creates the encounters
 
   
 
+These steps are performed for each individual PPN which is added to a list. This is then reduced to a dataframe
+
   
 
 **Step 3.** Run the function
@@ -73,7 +75,7 @@ This is the code the runs the function. It offers the ability to run it in "chun
 
   
 
-  
+This script can take a long time to execute. For a EDDC file of 3 million patients(PPNs) it took approximately 4 days to run on an HP intel computer with 32GB of memory.
 
   
 
